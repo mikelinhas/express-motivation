@@ -23,19 +23,35 @@ You can also use the `motivationErrorHandler` which will print out a standard `O
 
 ```js
 const express = require('express')
+const { motivation, motivationErrorHandler } = require('express-motivation')
+
 const app = express()
-const {motivation, motivationErrorHandler} = require('express-motivation')
 
 app.use(motivation)
 app.get('/', function (req, res) {
-  res.send('Hello World')
+    res.send('🍆 Hello there!')
 })
 app.get('/error', function (req, res, next) {
-  next(new Error("Big Error!"))
-}
+    next(new Error("Big Error!"))
+})
 app.use(motivationErrorHandler)
 
-app.listen(3000)
+app.listen(3000, () => {
+    console.log('🚀 Motivation app listening on port 3000')
+})
+```
+
+The server will now respond as such:
+
+``` haskell
+HTTP/1.1 200 OK
+X-Powered-By: Express
+X-Motivation: Too many of us are not living our dreams because we are living our fears. - Les Brown
+Content-Type: text/html; charset=utf-8
+Content-Length: 17
+Connection: close
+
+🍆 Hello there!
 ```
 
 ## Philosophy
