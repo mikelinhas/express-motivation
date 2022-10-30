@@ -1,20 +1,23 @@
 {
   "name": "express-motivation",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple middleware for express responses",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": [
     "lib/**/*"
   ],
   "scripts": {
-    "test": "jest --passWithNoTests",
+    "test": "jest",
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\"",
-    "lint": "eslint"
+    "lint": "eslint",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint"
   },
   "keywords": [
-    "express"
+    "express",
+    "motivation"
   ],
   "author": "Mike Zarco",
   "license": "ISC",
